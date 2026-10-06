@@ -22,11 +22,11 @@
     <main>
         <section class="hero">
             <div class="hero-text">
-                <p class="eyebrow">Калькулятор · v1.0</p>
+                <p class="eyebrow"><i class="led"></i>включён<b class="cursor">_</b><span class="sep">/</span>0 зависимостей</p>
                 <h1>Считать — <em>приятно</em>.</h1>
                 <p class="lead">
-                    Каждая кнопка вдавливается как настоящая. Есть лента вычислений,
-                    живой предпросмотр результата и четыре цветовые темы. Без рекламы и лишнего.
+                    Кнопки <mark>вдавливаются.</mark> Ответ виден <mark>до «=».</mark>
+                    Четыре <mark>цвета,</mark> ни одной рекламы.
                 </p>
 
                 <div class="themes" role="radiogroup" aria-label="Цветовая тема">
@@ -78,27 +78,43 @@
 
         <section class="features" id="features">
             <h2>Мелочи, которые <em>решают</em></h2>
-            <div class="cards">
-                <article class="card">
-                    <span class="num">01</span>
-                    <h3>Тактильные кнопки</h3>
-                    <p>Клавиши физически продавливаются, а оператор «=» дышит — калькулятор отвечает на каждое нажатие.</p>
+            <div class="bento">
+
+                <article class="tile t-press">
+                    <span class="num">01 — нажми</span>
+                    <button class="bigkey" id="bigkey" aria-label="Нажми меня"><span>push</span></button>
+                    <p><b id="pushes">0</b> нажатий. Клавиша продавливается, «=» дышит.</p>
                 </article>
-                <article class="card">
-                    <span class="num">02</span>
+
+                <article class="tile t-live">
+                    <span class="num">02 — напиши</span>
+                    <h3>Ответ раньше, чем «=»</h3>
+                    <label class="liveinput">
+                        <input id="live" value="12 * (3 + 4)" spellcheck="false" autocomplete="off" aria-label="Выражение">
+                    </label>
+                    <div class="liveout" id="liveout">= 84</div>
+                    <p>Без eval: выражение разбирает собственный парсер.</p>
+                </article>
+
+                <article class="tile t-tape">
+                    <span class="num">03 — вернись</span>
                     <h3>Лента вычислений</h3>
-                    <p>Последние примеры остаются на экране. Нажмите на строку — результат вернётся в работу.</p>
+                    <ol class="minitape" id="minitape"></ol>
+                    <p>Клик по строке возвращает ответ в работу.</p>
                 </article>
-                <article class="card">
-                    <span class="num">03</span>
-                    <h3>Живой результат</h3>
-                    <p>Ответ появляется под выражением ещё до «=». Никакого eval — только собственный разбор выражений.</p>
+
+                <article class="tile t-theme">
+                    <span class="num">04 — выбери</span>
+                    <h3>Цвет настроения</h3>
+                    <div class="chips">
+                        <button data-set="paper" style="--c:#ff5b2e;--b:#efeae1">Бумага</button>
+                        <button data-set="mint" style="--c:#1fae7a;--b:#e6efe9">Мята</button>
+                        <button data-set="lilac" style="--c:#7a5cff;--b:#ece9f6">Сирень</button>
+                        <button data-set="night" style="--c:#ffd23f;--b:#141414">Ночь</button>
+                    </div>
+                    <p>Тема меняется на всей странице и запоминается.</p>
                 </article>
-                <article class="card">
-                    <span class="num">04</span>
-                    <h3>Темы и звук</h3>
-                    <p>Четыре цветовые схемы и мягкий «клик» по желанию. Выбор запоминается в браузере.</p>
-                </article>
+
             </div>
         </section>
 

@@ -232,6 +232,52 @@
 
     render();
 
+    // ===== Bento: интерактивные фишки =====
+    const bigkey = document.getElementById('bigkey');
+    const pushes = document.getElementById('pushes');
+    let pushCount = 0;
+    bigkey.addEventListener('click', () => { pushes.textContent = ++pushCount; click('eq'); });
+
+    const live = document.getElementById('live');
+    const liveout = document.getElementById('liveout');
+    function updateLive() {
+        const src = live.value.replace(/\*/g, '×').replace(/\//g, '÷').replace(/-/g, '−')
+            .replace(/,/g, '.').replace(/[()\s]/g, '');
+        // скобок парсер не знает — раскрываем простейший случай a*(b+c) через рекурсию по самым вложенным
+        let text = live.value.replace(/\*/g, '×').replace(/\//g, '÷').replace(/-/g, '−').replace(/,/g, '.').replace(/\s/g, '');
+        try {
+            let guard = 0;
+            while (/\(/.test(text) && guard++ < 20) {
+                text = text.replace(/\(([^()]*)\)/, (_, inner) => String(evaluate(inner)).replace('-', '−'));
+            }
+            liveout.textContent = '= ' + fmt(evaluate(text));
+        } catch { liveout.textContent = src ? '…' : ''; }
+    }
+    live.addEventListener('input', updateLive);
+    updateLive();
+
+    const mini = document.getElementById('minitape');
+    const samples = ['128×3+45', '1200÷8', '19,9×3', '72×0,15', '999+1'];
+    let si = 0;
+    function pushSample() {
+        const e = samples[si++ % samples.length];
+        let r; try { r = fmt(evaluate(e.replace(/,/g, '.'))); } catch { return; }
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${e}</span><b>${r}</b>`;
+        li.addEventListener('click', () => {
+            expr = String(parseFloat(evaluate(e.replace(/,/g, '.')).toPrecision(12)));
+            justEvaluated = true; render(); click('soft');
+            document.getElementById('device').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+        mini.prepend(li);
+        while (mini.children.length > 3) mini.lastChild.remove();
+    }
+    pushSample(); pushSample(); pushSample();
+    setInterval(pushSample, 2600);
+
+    document.querySelectorAll('.chips button').forEach(b =>
+        b.addEventListener('click', () => { setTheme(b.dataset.set); click('soft'); }));
+
     // ?demo=night — предзаполненный пример (для скриншотов)
     const demo = new URLSearchParams(location.search).get('demo');
     if (demo !== null) {
