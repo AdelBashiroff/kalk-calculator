@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalk — калькулятор, на который приятно нажимать</title>
+    <meta name="description" content="Kalk — минималистичный калькулятор с тактильными кнопками, лентой вычислений и цветовыми темами.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="paper">
+
+    <header class="top">
+        <a class="brand" href="#">kalk<span>.</span></a>
+        <nav>
+            <a href="#features">Фишки</a>
+            <a href="#keys">Клавиши</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <p class="eyebrow">Калькулятор · v1.0</p>
+                <h1>Считать — <em>приятно</em>.</h1>
+                <p class="lead">
+                    Каждая кнопка вдавливается как настоящая. Есть лента вычислений,
+                    живой предпросмотр результата и четыре цветовые темы. Без рекламы и лишнего.
+                </p>
+
+                <div class="themes" role="radiogroup" aria-label="Цветовая тема">
+                    <span class="themes-label">Тема</span>
+                    <button class="swatch" data-set="paper" role="radio" aria-checked="true" aria-label="Бумага" style="--c:#ff5b2e"></button>
+                    <button class="swatch" data-set="mint" role="radio" aria-checked="false" aria-label="Мята" style="--c:#1fae7a"></button>
+                    <button class="swatch" data-set="lilac" role="radio" aria-checked="false" aria-label="Сирень" style="--c:#7a5cff"></button>
+                    <button class="swatch" data-set="night" role="radio" aria-checked="false" aria-label="Ночь" style="--c:#222"></button>
+                </div>
+            </div>
+
+            <div class="device" id="device">
+                <div class="screen">
+                    <ol class="tape" id="tape" aria-label="История"></ol>
+                    <div class="expr" id="expr" aria-live="off">0</div>
+                    <div class="result" id="result" aria-live="polite">&nbsp;</div>
+                </div>
+
+                <div class="pad">
+                    <button class="key fn" data-k="AC">AC</button>
+                    <button class="key fn" data-k="±">±</button>
+                    <button class="key fn" data-k="%">%</button>
+                    <button class="key op" data-k="÷">÷</button>
+
+                    <button class="key" data-k="7">7</button>
+                    <button class="key" data-k="8">8</button>
+                    <button class="key" data-k="9">9</button>
+                    <button class="key op" data-k="×">×</button>
+
+                    <button class="key" data-k="4">4</button>
+                    <button class="key" data-k="5">5</button>
+                    <button class="key" data-k="6">6</button>
+                    <button class="key op" data-k="−">−</button>
+
+                    <button class="key" data-k="1">1</button>
+                    <button class="key" data-k="2">2</button>
+                    <button class="key" data-k="3">3</button>
+                    <button class="key op" data-k="+">+</button>
+
+                    <button class="key" data-k="0">0</button>
+                    <button class="key" data-k=".">,</button>
+                    <button class="key fn" data-k="⌫" aria-label="Стереть">⌫</button>
+                    <button class="key eq" data-k="=">=</button>
+                </div>
+
+                <button class="sound" id="sound" aria-pressed="false">Звук: выкл</button>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <h2>Мелочи, которые <em>решают</em></h2>
+            <div class="cards">
+                <article class="card">
+                    <span class="num">01</span>
+                    <h3>Тактильные кнопки</h3>
+                    <p>Клавиши физически продавливаются, а оператор «=» дышит — калькулятор отвечает на каждое нажатие.</p>
+                </article>
+                <article class="card">
+                    <span class="num">02</span>
+                    <h3>Лента вычислений</h3>
+                    <p>Последние примеры остаются на экране. Нажмите на строку — результат вернётся в работу.</p>
+                </article>
+                <article class="card">
+                    <span class="num">03</span>
+                    <h3>Живой результат</h3>
+                    <p>Ответ появляется под выражением ещё до «=». Никакого eval — только собственный разбор выражений.</p>
+                </article>
+                <article class="card">
+                    <span class="num">04</span>
+                    <h3>Темы и звук</h3>
+                    <p>Четыре цветовые схемы и мягкий «клик» по желанию. Выбор запоминается в браузере.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="keys-sec" id="keys">
+            <h2>Руками <em>или</em> клавиатурой</h2>
+            <ul class="hotkeys">
+                <li><kbd>0–9</kbd><span>цифры</span></li>
+                <li><kbd>+ − * /</kbd><span>операции</span></li>
+                <li><kbd>Enter</kbd><span>посчитать</span></li>
+                <li><kbd>Backspace</kbd><span>стереть</span></li>
+                <li><kbd>Esc</kbd><span>очистить всё</span></li>
+                <li><kbd>%</kbd><span>процент</span></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2026 adelbashiroff</span>
+        <a href="https://github.com/AdelBashiroff/kalk-calculator" target="_blank" rel="noopener">GitHub ↗</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
