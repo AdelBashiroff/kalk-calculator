@@ -64,25 +64,10 @@ em { font-style: normal; color: var(--accent); transition: color .5s ease; }
     max-width: 1200px; margin: 0 auto; padding: 3rem 6% 6rem;
     display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center;
 }
-h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.02; letter-spacing: -2px; font-weight: 700; margin-bottom: 1.5rem; }
+h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.02; letter-spacing: -2px; font-weight: 700; margin-bottom: 2.2rem; }
 .eyebrow {
-    display: inline-flex; align-items: center; gap: .6rem;
-    font-family: 'JetBrains Mono', monospace; font-size: .78rem; letter-spacing: 1.5px;
-    text-transform: uppercase; color: #cfe9d6; background: var(--screen);
-    padding: .55rem 1rem; border-radius: 999px; margin-bottom: 1.6rem;
-    box-shadow: inset 0 2px 6px rgba(0,0,0,.5), 0 2px 0 var(--key-edge);
-}
-.eyebrow .sep { color: var(--screen-dim); }
-.eyebrow b { font-weight: 400; margin-left: -.5rem; animation: blink 1s steps(1) infinite; }
-.led { width: 8px; height: 8px; border-radius: 50%; background: #35e08a; box-shadow: 0 0 8px #35e08a; animation: pulse 2s ease-in-out infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-@keyframes pulse { 50% { opacity: .35; } }
-
-.lead { font-size: 1.5rem; line-height: 1.7; color: var(--muted); max-width: 460px; margin-bottom: 2.4rem; letter-spacing: -.3px; }
-.lead mark {
-    color: var(--ink); font-weight: 500; padding: 0 .4em; border-radius: 9px;
-    background: var(--key); box-shadow: 0 3px 0 var(--key-edge);
-    white-space: nowrap; display: inline-block; line-height: 1.35;
+    font-family: 'JetBrains Mono', monospace; font-size: .8rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem;
 }
 
 /* ===== Переключатель тем ===== */
